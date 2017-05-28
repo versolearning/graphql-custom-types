@@ -4,7 +4,11 @@ import {
   GraphQLLimitedString,
   GraphQLPassword,
   GraphQLDateTime,
-  GraphQLUUID
+  GraphQLUUID,
+  GraphQLMeteorId,
+  GraphQLObject,
+  GraphQLDate,
+  GraphQLUsername
 } from './scalars';
 
 import {
@@ -21,6 +25,11 @@ module.exports = {
   GraphQLLimitedString,
   GraphQLPassword,
   GraphQLDateTime,
-  GraphQLUUID
-}
+  GraphQLUUID,
+  GraphQLMeteorId,
+  GraphQLObject,
+  GraphQLDate,
+  GraphQLUsername
+};
+
 

@@ -12,12 +12,14 @@ export class Factory {
 
     const parser = function(ast) {
       if (ast.kind !== Kind.STRING) {
-        throw new GraphQLError('Query error: Can only parse strings got a: ' + ast.kind, [ast]);
+        return null;
+        // throw new GraphQLError('Query error: Can only parse strings got a: ' + ast.kind, [ast]);
       }
 
       var re = options.regex;
       if(!re.test(ast.value)) {
-        throw new GraphQLError(error, [ast]);
+        return null;
+        // throw new GraphQLError(error, [ast]);
       }
 
       return ast.value;
@@ -26,7 +28,7 @@ export class Factory {
     return this.getCustomScalar(options.name, options.description, parser);
   }
 
-  getCustomScalar(name, description, parser) {
-    return new GraphQLCustomScalarType(name, description, parser);
+  getCustomScalar(name, description, parser, serializer) {
+    return new GraphQLCustomScalarType(name, description, parser, serializer);
   }
 }

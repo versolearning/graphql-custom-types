@@ -1,13 +1,14 @@
-import { GraphQLError } from 'graphql/error';
-import { Kind } from 'graphql/language';
 import { Factory } from './factory';
 import { GraphQLCustomScalarType } from './types';
+import { GraphQLError } from 'graphql/error';
+import { Kind } from 'graphql/language';
+import SimpleSchema from 'simpl-schema';
 
 const factory = new Factory();
 
 export const GraphQLEmail = factory.getRegexScalar({
   name: 'Email',
-  regex: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+  regex: new RegExp(SimpleSchema.RegEx.Email),
   description: 'The Email scalar type represents E-Mail addresses compliant to RFC 822.',
   error: 'Query error: Not a valid Email address'
 });
@@ -135,3 +136,47 @@ export const GraphQLDateTime = factory.getCustomScalar(
     return ast.value;
   }
 );
+
+/* New types */
+
+export const GraphQLMeteorId = factory.getRegexScalar({
+  name: "GraphQLMeteorId",
+  regex: new RegExp(SimpleSchema.RegEx.Id),
+  description: "Represents a Meteor _id similar to the output of Random.id().",
+  error: "Query error: Not a valid Meteor _id"
+});
+
+export const GraphQLObject = factory.getCustomScalar(
+  "GraphQLObject",
+  "Represents a generic, blackbox object.",
+  // Parser
+  function(ast) {
+    if (ast.kind !== Kind.OBJECT) return null;
+    return ast.value;
+  },
+  // Serializer
+  function(value) {
+    return value;
+  }
+);
+
+export const GraphQLDate = factory.getCustomScalar(
+  "GraphQLDate",
+  "Represents a Date object.",
+  // Parser
+  function(ast) {
+    if (ast.kind !== Kind.STRING || isNaN(Date.parse(ast.value))) return null;
+    return new Date(ast.value);
+  },
+  // Serializer
+  function(value) {
+    return value.toISOString();
+  }
+);
+
+export const GraphQLUsername = factory.getRegexScalar({
+  name: "GraphQLUsername",
+  regex: new RegExp(/^[^@]*$/), // @ symbol not allowed in username
+  description: "Represents a valid username.",
+  error: "Query error: Not a valid username"
+});
