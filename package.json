@@ -1,7 +1,7 @@
 {
   "name": "graphql-custom-types-verso",
   "repository": "versolearning/graphql-custom-types",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "Collection of custom graphql types used in Verso App.",
   "author": "Phuc Nguyen <npm@phucnguyen.info>",
   "license": "MIT",
