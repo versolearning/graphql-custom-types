@@ -1,9 +1,9 @@
 {
-  "name": "graphql-custom-types",
-  "repository": "stylesuxx/graphql-custom-types",
-  "version": "0.7.3",
-  "description": "Collection of custom graphql types like Email, URL, password and many more",
-  "author": "Chris Landa <stylesuxx@gmail.com>",
+  "name": "graphql-custom-types-verso",
+  "repository": "versolearning/graphql-custom-types",
+  "version": "0.7.4",
+  "description": "Collection of custom graphql types used in Verso App.",
+  "author": "Phuc Nguyen <npm@phucnguyen.info>",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
@@ -34,5 +34,9 @@
   ],
   "engines": {
     "node": ">= 4.5.0"
+  },
+  "dependencies": {
+    "graphql": "^0.9.6",
+    "simpl-schema": "^0.3.0"
   }
 }
