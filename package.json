@@ -1,7 +1,7 @@
 {
   "name": "graphql-custom-types-verso",
   "repository": "versolearning/graphql-custom-types",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "Collection of custom graphql types used in Verso App.",
   "author": "Phuc Nguyen <npm@phucnguyen.info>",
   "license": "MIT",
@@ -25,13 +25,7 @@
   "peerDependencies": {
     "graphql": "^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0"
   },
-  "keywords": [
-    "es6",
-    "es2015",
-    "GraphQL",
-    "express-graphql",
-    "GraphQL types"
-  ],
+  "keywords": ["es6", "es2015", "GraphQL", "express-graphql", "GraphQL types"],
   "engines": {
     "node": ">= 4.5.0"
   },
